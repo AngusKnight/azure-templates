@@ -1,0 +1,42 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "skucode": {
+            "type": "string",
+            "defaultValue": "F1",
+            "allowedValues": [
+                "B1",
+                "F1",
+                "P1v2",
+                "P2v2",
+                "P3v2",
+                "S1",
+                "S2",
+                "S3"
+              ]
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "kind": "linux",
+            "properties": {
+                "reserved": true
+            },
+            "sku": {
+                "Name": "[parameters('skuCode')]"
+            }
+        }
+    ]
+}
