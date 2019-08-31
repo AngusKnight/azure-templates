@@ -14,7 +14,7 @@
         },
         "alwaysOn": {
             "type": "bool",
-            "defaultValue": "true"
+            "defaultValue": true
         },
         "linuxFxVersion": {
             "type": "string",
